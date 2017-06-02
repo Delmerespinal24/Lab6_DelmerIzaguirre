@@ -24,6 +24,7 @@ public class Principal extends javax.swing.JFrame {
 
     ArrayList<Producto> listaproductos = new ArrayList<>();
     ArrayList<Cliente> listaclientes = new ArrayList<>();
+    private double ganancias = 0;
 
     public Principal() {
         initComponents();
@@ -88,6 +89,8 @@ public class Principal extends javax.swing.JFrame {
         jl_clientes = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        Ganancia = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Agregar_cliente = new javax.swing.JMenuItem();
@@ -477,6 +480,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setText("Clientes");
 
+        Ganancia.setEditable(false);
+
+        jLabel17.setText("Ganacia");
+
         jMenu1.setText("Inicio");
 
         Agregar_cliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
@@ -519,13 +526,20 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(Cargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(JB_Clientes)))
-                .addGap(51, 51, 51))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(JB_Clientes)))
+                        .addGap(51, 51, 51))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addGap(27, 27, 27)
+                        .addComponent(Ganancia, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -546,7 +560,10 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Guardar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(Cargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Cargar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Ganancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel17)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -793,17 +810,27 @@ public class Principal extends javax.swing.JFrame {
 
     private void JB_ComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_ComprarMouseClicked
         // TODO add your handling code here:
+        
+        String nombreP = ((Producto) cb_productos.getSelectedItem()).getNombre() ;
+        String categoria = ((Producto) cb_productos.getSelectedItem()).getCategoria();
+        double precio= ((Producto) cb_productos.getSelectedItem()).getPrecio() ;
+        double descuento = ((Producto) cb_productos.getSelectedItem()).getDescuento();
+        double Pdescuento = ((((Producto) cb_productos.getSelectedItem()).getPrecio()) * (1- ((Producto) cb_productos.getSelectedItem()).getDescuento()));
+        
         String factura = "Bits and Bites \n"
                + "factura a nombre de " + cliente_seleccionado.getNombre()
                + "\nEdad: " + cliente_seleccionado.getEdad()
-               + "\nProducto: " + ((Producto) cb_productos.getSelectedItem()).getNombre() 
-               + "\nPrecio " + ((Producto) cb_productos.getSelectedItem()).getCategoria()
-               + "\nCategoria " + ((Producto) cb_productos.getSelectedItem()).getCategoria()
-               + "\nDescuento " + ((Producto) cb_productos.getSelectedItem())
-               + "\nPrecio con descuento " + ((((Producto) cb_productos.getSelectedItem()).getPrecio()) * (1- ((Producto) cb_productos.getSelectedItem()).getDescuento())) ;
+               + "\nProducto: " + nombreP
+               + "\nPrecio " + categoria
+               + "\nCategoria " + precio
+               + "\nDescuento " + descuento
+               + "\nPrecio con descuento " + Pdescuento ;
        
+       cliente_seleccionado.addProducto(new Producto(nombreP,categoria,precio,descuento));
        ta_compra.append(factura);
-
+       ganancias += Pdescuento;
+       Ganancia.setText("" + ganancias);
+       
     }//GEN-LAST:event_JB_ComprarMouseClicked
 
     /**
@@ -815,6 +842,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem Agregar_cliente;
     private javax.swing.JButton Cargar;
     private javax.swing.JDialog Compra;
+    private javax.swing.JTextField Ganancia;
     private javax.swing.JButton Guardar;
     private javax.swing.JButton Guardar_modificar;
     private javax.swing.JButton Guardar_producto;
@@ -834,6 +862,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -578,15 +578,25 @@
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="54" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jScrollPane2" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jButton1" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="JB_Clientes" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPane2" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jButton1" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="JB_Clientes" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="Ganancia" min="-2" pref="81" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -613,7 +623,11 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="Guardar" pref="40" max="32767" attributes="0"/>
-                  <Component id="Cargar" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="Cargar" alignment="3" max="32767" attributes="0"/>
+                      <Component id="Ganancia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
@@ -708,6 +722,16 @@
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Clientes"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="Ganancia">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel17">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ganacia"/>
       </Properties>
     </Component>
   </SubComponents>
