@@ -50,5 +50,12 @@ public class Cliente {
     public void removeProducto(Producto p){
         this.listaproductos.remove(p);
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
+    
     
 }
