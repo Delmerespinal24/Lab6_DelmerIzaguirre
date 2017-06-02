@@ -826,7 +826,7 @@ public class Principal extends javax.swing.JFrame {
                + "\nDescuento " + descuento
                + "\nPrecio con descuento " + Pdescuento ;
        
-       cliente_seleccionado.addProducto(new Producto(nombreP,categoria,precio,descuento));
+      
        ta_compra.append(factura);
        ganancias += Pdescuento;
        Ganancia.setText("" + ganancias);
