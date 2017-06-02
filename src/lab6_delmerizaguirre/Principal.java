@@ -803,7 +803,7 @@ public class Principal extends javax.swing.JFrame {
                + "\nDescuento " + ((Producto) cb_productos.getSelectedItem())
                + "\nPrecio con descuento " + ((((Producto) cb_productos.getSelectedItem()).getPrecio()) * (1- ((Producto) cb_productos.getSelectedItem()).getDescuento())) ;
        
-       ta_compra.setText(factura);
+       ta_compra.append(factura);
 
     }//GEN-LAST:event_JB_ComprarKeyPressed
 
