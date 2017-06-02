@@ -25,7 +25,7 @@ public class AdministrarProducto {
         return listaproductos;
     }
 
-    public void setListapersonas(ArrayList<Producto> listaproductos) {
+    public void setListaproductos(ArrayList<Producto> listaproductos) {
         this.listaproductos = listaproductos;
     }
 
@@ -82,12 +82,12 @@ public class AdministrarProducto {
             sc.useDelimiter(";");
             while (sc.hasNext()) {
                 
-                int p, d;
+                double p, d;
                 String n, c;
                 n = sc.next();
                 c = sc.next();
-                p = sc.nextInt();
-                d = sc.nextInt();
+                p = sc.nextDouble();
+                d = sc.nextDouble();
                 listaproductos.add(new Producto(
                         n, c, p, d
                 ));
