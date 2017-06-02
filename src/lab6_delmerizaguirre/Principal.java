@@ -376,9 +376,9 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane4.setViewportView(ta_compra);
 
         JB_Comprar.setText("Comprar");
-        JB_Comprar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                JB_ComprarKeyPressed(evt);
+        JB_Comprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JB_ComprarMouseClicked(evt);
             }
         });
 
@@ -791,10 +791,9 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_JB_ClientesMouseClicked
 
-    private void JB_ComprarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JB_ComprarKeyPressed
+    private void JB_ComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JB_ComprarMouseClicked
         // TODO add your handling code here:
-                 
-       String factura = "Bits and Bites \n"
+        String factura = "Bits and Bites \n"
                + "factura a nombre de " + cliente_seleccionado.getNombre()
                + "\nEdad: " + cliente_seleccionado.getEdad()
                + "\nProducto: " + ((Producto) cb_productos.getSelectedItem()).getNombre() 
@@ -805,7 +804,7 @@ public class Principal extends javax.swing.JFrame {
        
        ta_compra.append(factura);
 
-    }//GEN-LAST:event_JB_ComprarKeyPressed
+    }//GEN-LAST:event_JB_ComprarMouseClicked
 
     /**
      * @param args the command line arguments

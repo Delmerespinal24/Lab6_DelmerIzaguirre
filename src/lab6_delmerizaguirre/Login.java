@@ -134,9 +134,8 @@ public class Login extends javax.swing.JFrame {
 
     private void EntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EntrarMouseClicked
         // TODO add your handling code here:
-        
-        String usuario = "Delmer";
-        String contraseña = "d1234";
+        //Contraseña 1234 , usuario Admin
+        String usuario = "Admin";
         
         String user = tf_usuario.getText();
         String pass = ps_password.getText().toString();
